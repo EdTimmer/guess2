@@ -1,33 +1,140 @@
 .App {
   text-align: center;
+  background-color: rgb(37, 40, 82);
+  height: 100vh;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.grid-item {
+  /* background-color: blue; */
+  width: 200px;
+  height: 200px;
+  /* line-height: 100px; */
+  text-align: center;
+  margin: 20px;
+  /* border: 2px solid black; */
+  border-radius: 15px;
+}
+
+.one {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  background-color: green;
+}
+.two {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  background-color: yellow;
+}
+.three {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  background-color: red;
+}
+.four {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  background-color: blue;
+}
+
+.header {
+  background-color: rgb(18, 6, 46);
+  margin: 0;
+  font-size: 2em;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.body {
+  /* background-color: rgb(34, 39, 107); */
+  margin: 0;
+  font-size: 2em;
+  color: white;
+  /* text-align: center; */
+  /* justify-content: center; */
+  /* justify-self: center; */
+  /* align-self: center; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.result {
+  /* text-align: center;
+  justify-content: center;
+  justify-self: center;
+  align-self: center; */
+  border: 0 solid rgb(18, 6, 46);
+  border-radius: 25px;
+  background-color: rgb(18, 6, 46);
+  width: 160px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.reset {
+  color: black;
+  /* border: 2px solid black; */
+  background-color: whitesmoke;
+  font-size: 20px;
+  margin: 30px;
+}
+
+.correct-box-0-on {
+  background-color: white;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-1-on {
+  background-color: white;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-2-on {
+  background-color: white;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-3-on {
+  background-color: white;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-0-off {
+  background-color: green;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-1-off {
+  background-color: yellow;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-2-off {
+  background-color: red;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+.correct-box-3-off {
+  background-color: blue;
+  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2s;
+}
+
+/* Blinker */
+
+.blinking{
+  animation:blinkingBackground 0.8s;
+}
+@keyframes blinkingBackground{
+  0%{     background-color: white;}
 }
