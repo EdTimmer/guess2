@@ -68,7 +68,7 @@ class App extends Component {
           <span>{message}</span>
           <br/>
 
-          <ProgressBar correntCount={correctCount} />
+          <ProgressBar correctCount={correctCount} />
 
           <span>Correct: {correctCount}</span>
 

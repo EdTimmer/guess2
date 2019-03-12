@@ -40,11 +40,13 @@ class Boxes extends Component {
 
       if (randomNumber === num) {
         (async () => {
+          this.props.updateCorrectCount(); //added
+          this.props.messageFn();           //added
           this.props.switchGuessIsCorrect(true);
           await timer(1000)
             .then(() => this.props.switchGuessIsCorrect(false))
-            .then(() => this.props.updateCorrectCount())
-            .then(() => this.props.messageFn());
+            // .then(() => this.props.updateCorrectCount())
+            // .then(() => this.props.messageFn());
         })();
       }
     }
