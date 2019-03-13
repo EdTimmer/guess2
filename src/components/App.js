@@ -10,6 +10,10 @@ class App extends Component {
     correctCount: 0,
     guessIsCorrect: false,
     message: "",
+    box0: "",
+    box1: "",
+    box2: "",
+    box3: "",
   }
 
   messageFn = () => {
@@ -36,7 +40,50 @@ class App extends Component {
       correctCount: 0,
       guessIsCorrect: false,
       message: "",
+      box0: "",
+      box1: "",
+      box2: "",
+      box3: ""
     })
+  }
+
+  press = (num) => {
+
+    if (this.state.totalCount < 24) {
+
+      let randomNumber = Math.floor(Math.random() * 4);
+
+      this.updateTotalCount();
+    
+      switch(randomNumber) {
+        case 0:
+          this.setState({box0: "blink"})
+          break;
+        case 1:
+          this.setState({box1: "blink"})
+          break;
+        case 2:
+          this.setState({box2: "blink"})
+          break;
+        case 3:
+          this.setState({box3: "blink"})   
+          break;
+        default:
+          break;
+      }
+
+      if (randomNumber === num) {
+        const timer = m => new Promise(r => setTimeout(r, m));
+        (async () => {
+          this.switchGuessIsCorrect(true);
+          await timer(1000)
+            .then(() => this.updateCorrectCount())
+            .then(() => this.messageFn())
+            .then(() => this.switchGuessIsCorrect(false));
+
+        })();
+      }
+    }
   }
 
   updateTotalCount = () => {
@@ -54,29 +101,47 @@ class App extends Component {
   switchGuessIsCorrect = (bool) => {
     this.setState({
       guessIsCorrect: bool
-    })
+    });
+  }
+
+  clearBoxes = () => {
+    const timer = m => new Promise(r => setTimeout(r, m));
+    (async () => {
+      await timer(500)
+        .then(() => this.setState({
+          box0: "",
+          box1: "",
+          box2: "",
+          box3: ""
+        }))
+    })();
   }
 
   render() {
-    const { message, correctCount, guessIsCorrect, totalCount } = this.state;
-    const { clearState, updateCorrectCount, updateTotalCount, switchGuessIsCorrect, messageFn } = this;
+    const { message, correctCount, guessIsCorrect, totalCount, box0, box1, box2, box3 } = this.state;
+    const { clearState, press, clearBoxes } = this;
     return (
       <div className="App">
         <div className="header">
-          <p>Tap the correct square to see a picture</p>
-
-          <span>{message}</span>
-          <br/>
-
-          <ProgressBar correctCount={correctCount} />
-
-          <span>Correct: {correctCount}</span>
-
+          <div className="header-line">
+            <span>Tap the correct square to see a picture</span>
+          </div>
+          <div className="header-line">
+            <span>{message}</span> 
+          </div>
+          <div className="header-line">
+            <ProgressBar correctCount={correctCount} />
+          </div>
+          <div className="header-line">
+            <span>Correct: {correctCount}</span>
+          </div>
         </div>
         <div className="body">
-          {
-            guessIsCorrect ? <img src={pyramids} style={{ height: '500px', width: '500px' }} alt="reward" /> : <Boxes totalCount={totalCount} updateTotalCount={updateTotalCount} updateCorrectCount={updateCorrectCount} switchGuessIsCorrect={switchGuessIsCorrect} messageFn={messageFn} />
-          }
+          <div className="selection">
+            {
+              guessIsCorrect ? <img src={pyramids} style={{ height: '400px', width: '400px' }} alt="reward" /> : <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3} />
+            }
+          </div>          
         <div className="result">{totalCount} trials</div>
           <button className="reset" onClick={clearState}>Reset</button>
         </div>

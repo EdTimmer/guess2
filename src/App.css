@@ -48,6 +48,11 @@
   margin: 0;
   font-size: 2em;
   color: white;
+  height: 6em;
+}
+
+.header-line {
+  height: 3rem;
 }
 
 .body {
@@ -61,17 +66,25 @@
   /* align-self: center; */
 }
 
+.selection {
+  height: 17em;
+}
 .result {
   /* text-align: center;
   justify-content: center;
   justify-self: center;
   align-self: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 0 solid rgb(18, 6, 46);
   border-radius: 25px;
   background-color: rgb(18, 6, 46);
   width: 160px;
   height: 50px;
   margin: 0 auto;
+  padding: 1px;
+  /* font-size: 10px; */
 }
 
 .reset {
@@ -82,60 +95,12 @@
   margin: 30px;
 }
 
-.correct-box-0-on {
-  background-color: white;
-  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
-  transition: background-color 2s;
-}
-
-.correct-box-1-on {
-  background-color: white;
-  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
-  transition: background-color 2s;
-}
-
-.correct-box-2-on {
-  background-color: white;
-  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
-  transition: background-color 2s;
-}
-
-.correct-box-3-on {
-  background-color: white;
-  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
-  transition: background-color 2s;
-}
-
-.correct-box-0-off {
-  background-color: green;
-  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
-  transition: background-color 2s;
-}
-
-.correct-box-1-off {
-  background-color: yellow;
-  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
-  transition: background-color 2s;
-}
-
-.correct-box-2-off {
-  background-color: red;
-  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
-  transition: background-color 2s;
-}
-
-.correct-box-3-off {
-  background-color: blue;
-  -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
-  transition: background-color 2s;
-}
-
 /* Blinker */
 
-.blinking{
+.blink {
   animation:blinkingBackground 0.8s;
 }
-@keyframes blinkingBackground{
+@keyframes blinkingBackground {
   0%{     background-color: white;}
 }
 
@@ -145,18 +110,13 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* background-color: Blue; */
   justify-content: center;
 }
 
 .circle {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   margin: 2px;
-  /* line-height: 80px; */
-  /* font-size: 30px; */
-  /* text-align: center; */
-  /* background-color: White; */
   border: 2px solid white;
-  border-radius: 10px;
+  border-radius: 9px;
 }
