@@ -68,6 +68,13 @@
   /* align-self: center; */
 }
 
+.image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 17em;
+}
+
 .selection {
   height: 17em;
 }

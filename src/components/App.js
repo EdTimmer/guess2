@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import Boxes from './Boxes';
 import ProgressBar from './ProgressBar';
-import pyramids from '../images/pyramids.jpg';
+import Image from './Image';
 
 class App extends Component {
   state = {
@@ -160,7 +160,7 @@ class App extends Component {
         <div className="body">
           <div className="selection">
             {
-              guessIsCorrect ? <img src={pyramids} style={{ height: '400px', width: '400px' }} alt="reward" /> : <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3} />
+              guessIsCorrect ? <Image /> : <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3} />
             }
           </div>          
         <div className="result">{totalCount} trials</div>
