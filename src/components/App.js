@@ -104,6 +104,27 @@ class App extends Component {
     });
   }
 
+  pass = () => {
+    let randomNumber = Math.floor(Math.random() * 4);
+  
+    switch(randomNumber) {
+      case 0:
+        this.setState({box0: "blink"})
+        break;
+      case 1:
+        this.setState({box1: "blink"})
+        break;
+      case 2:
+        this.setState({box2: "blink"})
+        break;
+      case 3:
+        this.setState({box3: "blink"})   
+        break;
+      default:
+        break;
+    }
+  }
+
   clearBoxes = () => {
     const timer = m => new Promise(r => setTimeout(r, m));
     (async () => {
@@ -119,7 +140,7 @@ class App extends Component {
 
   render() {
     const { message, correctCount, guessIsCorrect, totalCount, box0, box1, box2, box3 } = this.state;
-    const { clearState, press, clearBoxes } = this;
+    const { clearState, press, clearBoxes, pass } = this;
     return (
       <div className="App">
         <div className="header">
@@ -143,7 +164,7 @@ class App extends Component {
             }
           </div>          
         <div className="result">{totalCount} trials</div>
-          <button className="reset" onClick={clearState}>Reset</button>
+          <button className="reset" onClick={clearState}>Reset</button> <button className="reset" onClick={() => {pass(); clearBoxes()} }>Pass</button>
         </div>
       </div>
     );

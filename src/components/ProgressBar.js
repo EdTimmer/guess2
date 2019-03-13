@@ -12,7 +12,7 @@ function ProgressBar ({correctCount}) {
   }
 
   for (let i = 0; i < correctCount; i++) {
-    circlesArray[i] = "white";;
+    circlesArray[i] = "#7FDBFF";
   }
 
   return (
