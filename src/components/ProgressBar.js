@@ -16,33 +16,64 @@ function ProgressBar ({correctCount}) {
   }
 
   return (
-    <div className="flex-container">
+    <div>  
+   
+      <div className="flex-container">
 
-      <span className="circle" style={{backgroundColor: circlesArray[0] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[1] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[2] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[3] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[4] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[5] }} />
-      <span className="circle" style={{backgroundColor: circlesArray[6] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[7] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[8] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[9] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[10] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[11] }} />
-      <span className="circle" style={{backgroundColor: circlesArray[12] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[13] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[14] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[15] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[16] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[17] }} />
-      <span className="circle" style={{backgroundColor: circlesArray[18] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[19] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[20] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[21] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[22] }} /> 
-      <span className="circle" style={{backgroundColor: circlesArray[23] }} />
+        <span className="circle" style={{backgroundColor: circlesArray[0] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[1] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[2] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[3] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[4] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[5] }} />
+        <span className="circle" style={{backgroundColor: circlesArray[6] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[7] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[8] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[9] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[10] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[11] }} />
+        <span className="circle" style={{backgroundColor: circlesArray[12] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[13] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[14] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[15] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[16] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[17] }} />
+        <span className="circle" style={{backgroundColor: circlesArray[18] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[19] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[20] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[21] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[22] }} /> 
+        <span className="circle" style={{backgroundColor: circlesArray[23] }} />
 
+      </div>
+
+      <div className="flex-container">
+        <span className="count" /> 
+        <span className="count" />
+        <span className="count" />
+        <span className="count" />
+        <span className="count" />
+        <span className="count">6</span>
+        <span className="count" /> 
+        <span className="count" />
+        <span className="count" />
+        <span className="count" />
+        <span className="count" />
+        <span className="count">12</span>
+        <span className="count" /> 
+        <span className="count" />
+        <span className="count" />
+        <span className="count" />
+        <span className="count" />
+        <span className="count">18</span>
+        <span className="count" /> 
+        <span className="count" />
+        <span className="count" />
+        <span className="count" />
+        <span className="count" />
+        <span className="count" />
+      </div>
+    
     </div>
   )  
 }
