@@ -1,11 +1,14 @@
 import React from 'react';
 import '../App.css';
 
-function ProgressBar ({correctCount}) {
+function ProgressBar ({correctCount, totalCount}) {
   
   
   let c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24;
   let circlesArray = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24];
+
+  let b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24;
+  let barsArray = [b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24];
 
   for (let i = 0; i < circlesArray.length; i++) {
     circlesArray[i] = "transparent";
@@ -14,6 +17,12 @@ function ProgressBar ({correctCount}) {
   for (let i = 0; i < correctCount; i++) {
     circlesArray[i] = "#7FDBFF";
   }
+
+  for (let i = 0; i < barsArray.length; i++) {
+    barsArray[i] = "transparent";
+  }
+
+  barsArray[totalCount - 1] = "white";
 
   return (
     <div>  
@@ -46,6 +55,35 @@ function ProgressBar ({correctCount}) {
         <span className="circle" style={{backgroundColor: circlesArray[23] }} />
 
       </div>
+
+      <div className="flex-container">
+
+        <span className="bar" style={{backgroundColor: barsArray[0] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[1] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[2] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[3] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[4] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[5] }} />
+        <span className="bar" style={{backgroundColor: barsArray[6] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[7] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[8] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[9] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[10] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[11] }} />
+        <span className="bar" style={{backgroundColor: barsArray[12] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[13] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[14] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[15] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[16] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[17] }} />
+        <span className="bar" style={{backgroundColor: barsArray[18] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[19] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[20] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[21] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[22] }} /> 
+        <span className="bar" style={{backgroundColor: barsArray[23] }} />
+
+    </div>
 
       <div className="flex-container">
         <span className="count" /> 

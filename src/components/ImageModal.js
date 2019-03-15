@@ -21,7 +21,7 @@ const styles = theme => ({
     display: "flex",    
     justifyContent: "center",
     alignItems: "center",
-    transition: 'opacity 2s ease-in-out'
+    transition: 'opacity 0.5s ease-in-out'
   },
 });
 
@@ -36,7 +36,7 @@ const Image = ({modalOpen, handleClose, modalOpacity, classes}) => {
       >
         
           <div style={{opacity: modalOpacity}} className={classes.paper}>
-
+          
           <img src={pyramids} style={{ height: '35rem', width: '35rem' }} alt="reward" />
   
           </div>      
