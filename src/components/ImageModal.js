@@ -32,7 +32,8 @@ const Image = ({modalOpen, handleClose, modalOpacity, classes}) => {
 
       <Modal
         open={modalOpen}
-        onClose={handleClose}          
+        onClose={handleClose}   
+        style={{transition: 'opacity 0.5s ease-in-out', opacity: modalOpacity}}
       >
         
           <div style={{opacity: modalOpacity}} className={classes.paper}>

@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     totalCount: 0,
     correctCount: 0,
-    message: "Tap the correct circle to see a picture",
+    message: "One of these circles hides a picture - click that circle",
     box0: "",
     box1: "",
     box2: "",
@@ -22,19 +22,19 @@ class App extends Component {
 
   messageFn = () => {
     if (this.state.correctCount < 5) {
-      this.setState({ message: "Tap the correct circle to see a picture" });
+      this.setState({ message: "One of these circles hides a picture - click that circle" });
     }
     if (this.state.correctCount >= 5 && this.state.correctCount < 8) {
-      this.setState({ message: "Getting there" });
+      this.setState({ message: "Potential observed" });
     }
     if (this.state.correctCount >= 8 && this.state.correctCount < 10) {
-      this.setState({ message: "Ability Observed" });
+      this.setState({ message: "Ability confirmed" });
     }
     if (this.state.correctCount >= 10 && this.state.correctCount < 12) {
-      this.setState({ message: "Awesome!" });
+      this.setState({ message: "We need to talk" });
     }
     if (this.state.correctCount >= 12 && this.state.correctCount < 25) {
-      this.setState({ message: "Call us" });
+      this.setState({ message: "Report for duty" });
     }
   }
 
@@ -42,7 +42,7 @@ class App extends Component {
     this.setState({
       totalCount: 0,
       correctCount: 0,
-      message: "Tap the correct circle to see a picture",
+      message: "One of these circles hides a picture - click that circle",
       box0: "",
       box1: "",
       box2: "",
@@ -179,7 +179,7 @@ class App extends Component {
       <div className="App" style={{opacity: mainOpacity}}>
         <div className="header">
           <div className="header-title">
-            <span>Oracle School</span>
+            <span>Psi Ops Academy</span>
           </div>
           <div className="header-line">
             <span>{message}</span>
@@ -207,7 +207,7 @@ class App extends Component {
           <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} />
           
         </div>
-        <p style={{color: "white"}}>Inspired by Russell Targ's ESP Trainer iOS app.  Please visit <a href="http://espresearch.com" rel="noopener noreferrer" target="_blank">espresearch.com</a></p>
+        <p style={{color: "white"}}>Inspired by Russell Targ's ESP Trainer iOS app. <br /><a href="http://espresearch.com" rel="noopener noreferrer" target="_blank">Would you like to know more?</a></p>
       </div>
     );
   }
