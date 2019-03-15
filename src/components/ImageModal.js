@@ -6,16 +6,27 @@ import pyramids from '../images/pyramids.jpg';
 
 const styles = theme => ({
   paper: {
-    position: 'absolute',
-    width: theme.spacing.unit * 63,
+    // position: 'absolute',
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "12rem",
+    marginBottom: "auto",
+    // width: theme.spacing.unit * 63,
+    width: "40rem",
+    height: "40rem",
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
+    // padding: theme.spacing.unit * 4,
     outline: 'none',
+    display: "flex",    
+    justifyContent: "center",
+    alignItems: "center",
+    transition: 'opacity 2s ease-in-out'
   },
 });
 
 const Image = ({modalOpen, handleClose, modalOpacity, classes}) => {
+  // console.log('modalOpacity :', modalOpacity)
   return (
     <div>     
 
@@ -24,9 +35,9 @@ const Image = ({modalOpen, handleClose, modalOpacity, classes}) => {
         onClose={handleClose}          
       >
         
-          <div style={{marginLeft: "30rem", marginTop: "12rem", transition: 'opacity 2s ease-in-out', opacity: modalOpacity}} className={classes.paper}>
+          <div style={{opacity: modalOpacity}} className={classes.paper}>
 
-          <img src={pyramids} style={{ height: '500px', width: '500px' }} alt="reward" />
+          <img src={pyramids} style={{ height: '35rem', width: '35rem' }} alt="reward" />
   
           </div>      
         

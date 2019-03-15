@@ -15,7 +15,9 @@ class App extends Component {
     box2: "",
     box3: "",
     modalOpacity: 0,
-    modalOpen: false
+    modalOpen: false,
+    mainOpacity: 1,
+    boxColor: ""
   }
 
   messageFn = () => {
@@ -44,7 +46,11 @@ class App extends Component {
       box0: "",
       box1: "",
       box2: "",
-      box3: ""
+      box3: "",
+      modalOpacity: 0,
+      modalOpen: false,
+      mainOpacity: 1,
+      boxColor: ""
     })
   }
 
@@ -55,6 +61,7 @@ class App extends Component {
       let randomNumber = Math.floor(Math.random() * 4);
 
       this.updateTotalCount();
+
 
       switch (randomNumber) {
         case 0:
@@ -72,6 +79,10 @@ class App extends Component {
         default:
           break;
       }
+      
+      if (this.state.totalCount === 23){
+        this.setState({boxColor: "grey"})
+      }
 
       if (randomNumber === num) {
 
@@ -79,14 +90,16 @@ class App extends Component {
         // this.setState({modalOpacity: 1})
         this.updateCorrectCount();
         this.messageFn();
-        this.setState({modalOpacity: 1})
+        // this.setState({modalOpacity: 1})
         const timer = m => new Promise(r => setTimeout(r, m));
         (async () => {
             await timer(2000)
               .then(() => this.handleClose())              
           })();
       }
+     
     }
+
   }
 
   updateTotalCount = () => {
@@ -136,7 +149,7 @@ class App extends Component {
   }
 
   handleOpen = () => {
-    this.setState({ modalOpen: true });
+    this.setState({ modalOpen: true, modalOpacity: 1 });
   };
 
   handleClose = () => {
@@ -144,10 +157,10 @@ class App extends Component {
   };
 
   render() {
-    const { message, correctCount, totalCount, box0, box1, box2, box3, modalOpen, modalOpacity } = this.state;
+    const { message, correctCount, totalCount, box0, box1, box2, box3, modalOpen, modalOpacity, mainOpacity, boxColor } = this.state;
     const { clearState, press, clearBoxes, pass, handleOpen, handleClose } = this;
     return (
-      <div className="App">
+      <div className="App" style={{opacity: mainOpacity}}>
         <div className="header">
           <div className="header-title">
             <span>ESP TRAINER</span>
@@ -164,12 +177,12 @@ class App extends Component {
         </div>
         <div className="body">
           <div className="boxes">
-            <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3}  />
+            <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3} boxColor={boxColor}  />
           </div>
           <div className="result"><span style={{paddingLeft: '1rem', paddingRight: '0.3rem'}}>{totalCount}</span><span style={{fontSize: '1.5rem', paddingLeft: '0.3rem', paddingRight: '1rem'}}> trials</span></div>
           <div className="buttons-container">
-            <div className="button" onClick={clearState}>Reset</div>
-            <div className="button" onClick={() => { pass(); clearBoxes() }}>Pass</div>
+            <button className="regular-button" onClick={clearState}>Reset</button>
+            <button className="regular-button" onClick={() => { pass(); clearBoxes() }} disabled={totalCount === 24}>Pass</button>
           </div>
           
           <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} />
