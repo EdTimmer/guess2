@@ -16,7 +16,6 @@ class App extends Component {
     box3: "",
     modalOpacity: 0,
     modalOpen: false,
-    mainOpacity: 1,
     boxColor: ""
   }
 
@@ -49,7 +48,6 @@ class App extends Component {
       box3: "",
       modalOpacity: 0,
       modalOpen: false,
-      mainOpacity: 1,
       boxColor: "",
       circleOpacity: 1
     })
@@ -173,42 +171,49 @@ class App extends Component {
   }
 
   render() {
-    const { message, correctCount, totalCount, box0, box1, box2, box3, modalOpen, modalOpacity, mainOpacity, boxColor, circleOpacity } = this.state;
+    const { message, correctCount, totalCount, box0, box1, box2, box3, modalOpen, modalOpacity, boxColor, circleOpacity } = this.state;
     const { clearState, press, clearBoxes, pass, handleOpen, handleClose, sameColor } = this;
     return (
-      <div className="App" style={{opacity: mainOpacity}}>
+      <div className="App">
+
         <div className="header">
           <div className="header-title">
             <span>Psi Ops Academy</span>
           </div>
+
+          <div>
+            <ProgressBar correctCount={correctCount} totalCount={totalCount} />
+          </div>
+
           <div className="header-line">
             <span>{message}</span>
           </div>
-          <div className="header-line">
-            <ProgressBar correctCount={correctCount} totalCount={totalCount} />
+        </div>
+
+        
+        <div className="boxes">
+          <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3} boxColor={boxColor} circleOpacity={circleOpacity} />
+        </div>
+
+        <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} />  
+
+        <div className="buttons-container">
+
+          <button className="regular-button" onClick={clearState}>Reset</button>
+          <button className="regular-button" onClick={sameColor} disabled={totalCount === 24}>One Color</button>
+          <button className="regular-button" onClick={() => { pass(); clearBoxes() }} disabled={totalCount === 24}>Pass</button>
+        </div>
+
+        <div className="footer">
+          <div style={{padding: "0.5rem"}}>
+            <span>Inspired by Russell Targ's ESP Trainer iOS app.</span>
           </div>
-          <div className="header-line">
-            {/*<span>correct: {correctCount}</span>*/}
+          <div>
+            <a href="http://espresearch.com" rel="noopener noreferrer" target="_blank">Would you like to know more?</a>
           </div>
         </div>
-        <div className="body">
-          <div className="boxes">
-            <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3} boxColor={boxColor} circleOpacity={circleOpacity} />
-          </div>
 
-          {/*<div className="result"><span style={{paddingLeft: '1rem', paddingRight: '0.3rem'}}>{totalCount}</span><span style={{fontSize: '1.5rem', paddingLeft: '0.3rem', paddingRight: '1rem'}}> trials</span></div>*/}
-
-          <div className="buttons-container">
-            <button className="regular-button" onClick={clearState}>Reset</button>
-            <button className="regular-button" onClick={sameColor} disabled={totalCount === 24}>One Color</button>
-            <button className="regular-button" onClick={() => { pass(); clearBoxes() }} disabled={totalCount === 24}>Pass</button>
-          </div>
-          
-          <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} />
-          
-        </div>
-        <p style={{color: "white"}}>Inspired by Russell Targ's ESP Trainer iOS app. <br /><a href="http://espresearch.com" rel="noopener noreferrer" target="_blank">Would you like to know more?</a></p>
-      </div>
+      </div>      
     );
   }
 }
