@@ -9,19 +9,20 @@ class App extends Component {
   state = {
     totalCount: 0,
     correctCount: 0,
-    message: "One of these circles hides a picture - click that circle",
+    message: "Click on a circle that hides a picture",
     box0: "",
     box1: "",
     box2: "",
     box3: "",
     modalOpacity: 0,
     modalOpen: false,
-    boxColor: ""
+    boxColor: "",
+    circleOpacity: 1
   }
 
   messageFn = () => {
     if (this.state.correctCount < 5) {
-      this.setState({ message: "One of these circles hides a picture - click that circle" });
+      this.setState({ message: "Click on a circle that hides a picture" });
     }
     if (this.state.correctCount >= 5 && this.state.correctCount < 8) {
       this.setState({ message: "Potential observed" });
@@ -41,7 +42,7 @@ class App extends Component {
     this.setState({
       totalCount: 0,
       correctCount: 0,
-      message: "One of these circles hides a picture - click that circle",
+      message: "Click on a circle that hides a picture",
       box0: "",
       box1: "",
       box2: "",
@@ -57,11 +58,11 @@ class App extends Component {
 
     if (this.state.totalCount < 24) {
 
-    function getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
       // let randomNumber = Math.floor(Math.random() * 4);
       let randomNumber = getRandomInt(0, 3);
   
@@ -100,7 +101,11 @@ class App extends Component {
         const timer = m => new Promise(r => setTimeout(r, m));
 
         (async () => {
-          await timer(1000)
+          this.setState({modalOpacity: 0})
+          await timer(500)
+          .then(() => this.setState({modalOpacity: 1}))
+
+          await timer(1500)
             .then(() => this.setState({modalOpacity: 0}))
 
           await timer(500)
@@ -184,10 +189,6 @@ class App extends Component {
           <div>
             <ProgressBar correctCount={correctCount} totalCount={totalCount} />
           </div>
-
-          <div className="header-line">
-            <span>{message}</span>
-          </div>
         </div>
 
         
@@ -196,6 +197,13 @@ class App extends Component {
         </div>
 
         <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} />  
+
+        
+          <div className="message">
+            <span>{message}</span>
+          </div>
+        
+
 
         <div className="buttons-container">
 

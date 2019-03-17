@@ -3,7 +3,7 @@ import '../App.css';
 
 const Boxes = ({press, clearBoxes, box0, box1, box2, box3, boxesOpacity, boxColor, circleOpacity}) => {
   return (
-    <div className="grid-container body" style={{transition: '2s ease-in-out', opacity: boxesOpacity}}>
+    <div className="grid-container" style={{transition: '2s ease-in-out', opacity: boxesOpacity}}>
 
       <div className={`grid-item one ${box0}`} style={{backgroundColor: boxColor, opacity: circleOpacity}} onClick={() => {press(0); clearBoxes()} } />
       <div className={`grid-item two ${box1}`} style={{backgroundColor: boxColor, opacity: circleOpacity}} onClick={() => {press(1); clearBoxes()} } />
