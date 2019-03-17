@@ -29,18 +29,10 @@ const styles = theme => ({
   },
 });
 
-const Image = ({modalOpen, handleClose, modalOpacity, classes}) => {
+const Image = ({modalOpen, handleClose, modalOpacity, classes, imageNumber}) => {
 
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-  let n = getRandomInt(0, 3);
   let imageArray = [img1, img2, img3, img4];
-  let image = imageArray[n];
-
-
+  let image = imageArray[imageNumber];
 
   return (
     <div>     

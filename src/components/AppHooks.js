@@ -16,6 +16,7 @@ const AppHooks = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [boxColor, setBoxColor] = useState("");
   const [circleOpacity, setCircleOpacity] = useState(1);
+  const [imageNumber, setImageNumber] = useState(0);
 
   const messageFn = () => {
     if (correctCount < 5) {
@@ -46,7 +47,8 @@ const AppHooks = () => {
     setModalOpacity(0);
     setModalOpen(false);
     setBoxColor("");
-    setCircleOpacity(1)
+    setCircleOpacity(1);
+    setImageNumber(0);
   }
 
   const press = (num) => {
@@ -91,6 +93,9 @@ const AppHooks = () => {
         messageFn();
 
         const timer = m => new Promise(r => setTimeout(r, m));
+
+        let n = getRandomInt(0, 3);
+        setImageNumber(n);
 
         (async () => {
           setModalOpacity(0);
@@ -180,7 +185,7 @@ const AppHooks = () => {
         <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3} boxColor={boxColor} circleOpacity={circleOpacity} />
       </div>
 
-      <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} />  
+      <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} imageNumber={imageNumber} />  
 
       
         <div className="message">
