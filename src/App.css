@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color: #001f3f;
+  /* background-color: #7E6B8F; */
   align-items: center;
   /* height: 100vh; */
 }
@@ -28,7 +29,8 @@
 .one {
   grid-column: 1/2;
   grid-row: 1/2;
-  background-color: #2ECC40;
+  /* background-color: #2ECC40; */
+  background-color: #0074D9;
 }
 .two {
   grid-column: 2/3;
@@ -43,7 +45,8 @@
 .four {
   grid-column: 2/3;
   grid-row: 2/3;
-  background-color: #0074D9;
+  /* background-color: #0074D9; */
+  background-color: #2ECC40;
 }
 
 .header {
@@ -79,6 +82,21 @@
   /* background-color:	rgb(22, 0, 36); */
   margin: 1rem auto 0 auto;
 }
+
+/* .boxes-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box-item {
+  width: 15rem;
+  height: 15rem;
+  text-align: center;
+  margin: 1rem;
+  border-radius: 50%;
+} */
 
 .boxes {
   /* height: 17em; */

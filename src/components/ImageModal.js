@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import pyramids from '../images/pyramids.jpg';
+import img1 from '../images/img1.jpg';
+import img2 from '../images/img2.jpg';
+import img3 from '../images/img3.jpg';
+import img4 from '../images/img4.jpg';
 
 const styles = theme => ({
   paper: {
     // position: 'absolute',
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: "12rem",
+    marginTop: "10rem",
     marginBottom: "auto",
     // width: theme.spacing.unit * 63,
     width: "40rem",
@@ -26,7 +30,18 @@ const styles = theme => ({
 });
 
 const Image = ({modalOpen, handleClose, modalOpacity, classes}) => {
-  // console.log('modalOpacity :', modalOpacity)
+
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  let n = getRandomInt(0, 3);
+  let imageArray = [img1, img2, img3, img4];
+  let image = imageArray[n];
+
+
+
   return (
     <div>     
 
@@ -38,7 +53,7 @@ const Image = ({modalOpen, handleClose, modalOpacity, classes}) => {
         
           <div style={{opacity: modalOpacity}} className={classes.paper}>
           
-          <img src={pyramids} style={{ height: '35rem', width: '35rem' }} alt="reward" />
+          <img src={image} style={{ height: '35rem', width: '35rem' }} alt="reward" />
   
           </div>      
         
