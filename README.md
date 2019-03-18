@@ -1,1 +1,1 @@
-ESP Trainer
+Psi Ops Academy

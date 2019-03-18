@@ -7,7 +7,7 @@ import ImageModal from './ImageModal';
 const AppHooks = () => {
   const [totalCount, setTotalCount] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
-  const [message, setMessage] = useState("Click on a circle that hides a picture");
+  const [message, setMessage] = useState("Click on the circle that hides a picture");
   const [box0, setBox0] = useState("");
   const [box1, setBox1] = useState("");
   const [box2, setBox2] = useState("");
@@ -22,16 +22,16 @@ const AppHooks = () => {
     if (correctCount < 5) {
       setMessage("Click on a circle that hides a picture");
     }
-    if (correctCount >= 5 && correctCount < 8) {
+    if (correctCount >= 5 && correctCount < 7) {
       setMessage("Potential observed");
     }
-    if (correctCount >= 8 && correctCount < 10) {
+    if (correctCount >= 7 && correctCount < 9) {
       setMessage("Ability confirmed");
     }
-    if (correctCount >= 10 && correctCount < 12) {
+    if (correctCount >= 9 && correctCount < 11) {
       setMessage("We need to talk");
     }
-    if (correctCount >= 12 && correctCount < 25) {
+    if (correctCount >= 11 && correctCount < 23) {
       setMessage("Report for duty");
     }
   }
@@ -62,7 +62,7 @@ const AppHooks = () => {
       }
 
       let randomNumber = getRandomInt(0, 3);
-  
+
       updateTotalCount();
 
       switch (randomNumber) {
@@ -188,9 +188,9 @@ const AppHooks = () => {
       <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} imageNumber={imageNumber} />  
 
       
-        <div className="message">
-          <span>{message}</span>
-        </div>
+      <div className="message">
+        <span>{message}</span>
+      </div>
 
       <div className="buttons-container">
 
@@ -204,7 +204,7 @@ const AppHooks = () => {
           <span>Inspired by Russell Targ's ESP Trainer iOS app.</span>
         </div>
         <div>
-          <a href="http://espresearch.com" rel="noopener noreferrer" target="_blank">Would you like to know more?</a>
+          <a href="http://espresearch.com" rel="noopener noreferrer" target="_blank">espresearch.com</a>
         </div>
       </div>
 
