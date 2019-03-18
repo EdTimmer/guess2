@@ -7,7 +7,7 @@ import ImageModal from './ImageModal';
 const AppHooks = () => {
   const [totalCount, setTotalCount] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
-  const [message, setMessage] = useState("Click on the circle that hides a picture");
+  const [message, setMessage] = useState("Click on a circle that hides a picture");
   const [box0, setBox0] = useState("");
   const [box1, setBox1] = useState("");
   const [box2, setBox2] = useState("");
