@@ -1,229 +1,216 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import Boxes from './Boxes';
 import ProgressBar from './ProgressBar';
-// import Modal2 from './Modal2';
 import ImageModal from './ImageModal';
 
-class App extends Component {
-  state = {
-    totalCount: 0,
-    correctCount: 0,
-    message: "Click on a circle that hides a picture",
-    box0: "",
-    box1: "",
-    box2: "",
-    box3: "",
-    modalOpacity: 0,
-    modalOpen: false,
-    boxColor: "",
-    circleOpacity: 1
+const App = () => {
+  const [totalCount, setTotalCount] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [message, setMessage] = useState("Click on a circle that hides a picture");
+  const [box0, setBox0] = useState("");
+  const [box1, setBox1] = useState("");
+  const [box2, setBox2] = useState("");
+  const [box3, setBox3] = useState("");
+  const [modalOpacity, setModalOpacity] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [boxColor, setBoxColor] = useState("");
+  const [circleOpacity, setCircleOpacity] = useState(1);
+  const [imageNumber, setImageNumber] = useState(0);
+
+  const messageFn = () => {
+    if (correctCount < 5) {
+      setMessage("Click on a circle that hides a picture");
+    }
+    if (correctCount >= 5 && correctCount < 7) {
+      setMessage("Potential observed");
+    }
+    if (correctCount >= 7 && correctCount < 9) {
+      setMessage("Ability confirmed");
+    }
+    if (correctCount >= 9 && correctCount < 11) {
+      setMessage("We need to talk");
+    }
+    if (correctCount >= 11 && correctCount < 23) {
+      setMessage("Report for duty");
+    }
   }
 
-  messageFn = () => {
-    if (this.state.correctCount < 5) {
-      this.setState({ message: "Click on a circle that hides a picture" });
-    }
-    if (this.state.correctCount >= 5 && this.state.correctCount < 8) {
-      this.setState({ message: "Potential observed" });
-    }
-    if (this.state.correctCount >= 8 && this.state.correctCount < 10) {
-      this.setState({ message: "Ability confirmed" });
-    }
-    if (this.state.correctCount >= 10 && this.state.correctCount < 12) {
-      this.setState({ message: "We need to talk" });
-    }
-    if (this.state.correctCount >= 12 && this.state.correctCount < 25) {
-      this.setState({ message: "Report for duty" });
-    }
+  const clearState = () => {
+    setTotalCount(0);
+    setCorrectCount(0);
+    setMessage("Click on a circle that hides a picture");
+    setBox0("");
+    setBox1("");
+    setBox2("");
+    setBox3("");
+    setModalOpacity(0);
+    setModalOpen(false);
+    setBoxColor("");
+    setCircleOpacity(1);
+    setImageNumber(0);
   }
 
-  clearState = () => {
-    this.setState({
-      totalCount: 0,
-      correctCount: 0,
-      message: "Click on a circle that hides a picture",
-      box0: "",
-      box1: "",
-      box2: "",
-      box3: "",
-      modalOpacity: 0,
-      modalOpen: false,
-      boxColor: "",
-      circleOpacity: 1
-    })
-  }
+  const press = (num) => {
 
-  press = (num) => {
+    if (totalCount < 24) {
 
-    if (this.state.totalCount < 24) {
-
-      function getRandomInt(min, max) {
+      const getRandomInt = (min, max) => {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
-      // let randomNumber = Math.floor(Math.random() * 4);
-      let randomNumber = getRandomInt(0, 3);
-  
-      this.updateTotalCount();
 
+      let randomNumber = getRandomInt(0, 3);
+
+      updateTotalCount();
 
       switch (randomNumber) {
         case 0:
-          this.setState({ box0: "blink" })
+          setBox0("blink");
           break;
         case 1:
-          this.setState({ box1: "blink" })
+          setBox1("blink");
           break;
         case 2:
-          this.setState({ box2: "blink" })
+          setBox2("blink");
           break;
         case 3:
-          this.setState({ box3: "blink" })
+          setBox3("blink");
           break;
         default:
           break;
       }
       
-      if (this.state.totalCount === 23){
-        // this.setState({boxColor: "grey"})
-        this.setState({circleOpacity: 0.5})
+      if (totalCount === 23){
+        setCircleOpacity(0.5);
       }
 
       if (randomNumber === num) {
 
-        this.handleOpen();
-        // this.setState({modalOpacity: 1})
-        this.updateCorrectCount();
-        this.messageFn();
-        // this.setState({modalOpacity: 1})
+        handleOpen();
+        updateCorrectCount();
+        messageFn();
+
         const timer = m => new Promise(r => setTimeout(r, m));
 
+        let n = getRandomInt(0, 3);
+        setImageNumber(n);
+
         (async () => {
-          this.setState({modalOpacity: 0})
+          setModalOpacity(0);
           await timer(500)
-          .then(() => this.setState({modalOpacity: 1}))
+          .then(() => setModalOpacity(1));
 
           await timer(1500)
-            .then(() => this.setState({modalOpacity: 0}))
+            .then(() => setModalOpacity(0));
 
           await timer(500)
-            .then(() => this.handleClose())
+            .then(() => handleClose());
         })();
-      }
-     
+      }     
     }
-
   }
 
-  updateTotalCount = () => {
-    this.setState({
-      totalCount: this.state.totalCount + 1
-    })
+  const updateTotalCount = () => {
+    setTotalCount(totalCount + 1);
   }
 
-  updateCorrectCount = () => {
-    this.setState({
-      correctCount: this.state.correctCount + 1
-    })
+  const updateCorrectCount = () => {
+    setCorrectCount(correctCount + 1);
   }
 
-  pass = () => {
+  const pass = () => {
     let randomNumber = Math.floor(Math.random() * 4);
 
     switch (randomNumber) {
       case 0:
-        this.setState({ box0: "blink" })
+        setBox0("blink");
         break;
       case 1:
-        this.setState({ box1: "blink" })
+        setBox1("blink");
         break;
       case 2:
-        this.setState({ box2: "blink" })
+        setBox2("blink");
         break;
       case 3:
-        this.setState({ box3: "blink" })
+        setBox3("blink");
         break;
       default:
         break;
     }
   }
 
-  clearBoxes = () => {
+  const clearBoxes = () => {
     const timer = m => new Promise(r => setTimeout(r, m));
     (async () => {
       await timer(500)
-        .then(() => this.setState({
-          box0: "",
-          box1: "",
-          box2: "",
-          box3: ""
-        }))
-    })();
+        .then(() => {
+          setBox0("");
+          setBox1("");
+          setBox2("");
+          setBox3("");
+        })
+      })();
   }
 
-  handleOpen = () => {
-    this.setState({ modalOpen: true, modalOpacity: 1 });
+  const handleOpen = () => {
+    setModalOpen(true);
+    setModalOpacity(1);
   }
 
-  handleClose = () => {
-    this.setState({ modalOpen: false });
+  const handleClose = () => {
+    setModalOpen(false);
   }
 
-  sameColor = () => {
-    this.setState({ boxColor: "#0074D9" })
+  const sameColor = () => {
+    setBoxColor("#0074D9");
   }
 
-  render() {
-    const { message, correctCount, totalCount, box0, box1, box2, box3, modalOpen, modalOpacity, boxColor, circleOpacity } = this.state;
-    const { clearState, press, clearBoxes, pass, handleOpen, handleClose, sameColor } = this;
-    return (
-      <div className="App">
+  return (
+    <div className="App">
 
-        <div className="header">
-          <div className="header-title">
-            <span>Psi Ops Academy</span>
-          </div>
-
-          <div>
-            <ProgressBar correctCount={correctCount} totalCount={totalCount} />
-          </div>
+      <div className="header">
+        <div className="header-title">
+          <span>Psi Ops Academy</span>
         </div>
 
-        
-        <div className="boxes">
-          <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3} boxColor={boxColor} circleOpacity={circleOpacity} />
+        <div>
+          <ProgressBar correctCount={correctCount} totalCount={totalCount} />
         </div>
+      </div>
 
-        <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} />  
+      
+      <div className="boxes">
+        <Boxes press={press} clearBoxes={clearBoxes} box0={box0} box1={box1} box2={box2} box3={box3} boxColor={boxColor} circleOpacity={circleOpacity} />
+      </div>
 
-        
-          <div className="message">
-            <span>{message}</span>
-          </div>
-        
+      <ImageModal modalOpen={modalOpen} handleOpen={handleOpen} handleClose={handleClose} modalOpacity={modalOpacity} imageNumber={imageNumber} />  
 
+      
+      <div className="message">
+        <span>{message}</span>
+      </div>
 
-        <div className="buttons-container">
+      <div className="buttons-container">
 
-          <button className="regular-button" onClick={clearState}>Reset</button>
-          <button className="regular-button" onClick={sameColor} disabled={totalCount === 24}>One Color</button>
-          <button className="regular-button" onClick={() => { pass(); clearBoxes() }} disabled={totalCount === 24}>Pass</button>
+        <button className="regular-button" onClick={clearState}>Reset</button>
+        <button className="regular-button" onClick={sameColor} disabled={totalCount === 24}>One Color</button>
+        <button className="regular-button" onClick={() => { pass(); clearBoxes() }} disabled={totalCount === 24}>Pass</button>
+      </div>
+
+      <div className="footer">
+        <div style={{padding: "0.5rem"}}>
+          <span>Inspired by Russell Targ's ESP Trainer iOS app.</span>
         </div>
-
-        <div className="footer">
-          <div style={{padding: "0.5rem"}}>
-            <span>Inspired by Russell Targ's ESP Trainer iOS app.</span>
-          </div>
-          <div>
-            <a href="http://espresearch.com" rel="noopener noreferrer" target="_blank">Would you like to know more?</a>
-          </div>
+        <div>
+          <a href="http://espresearch.com" rel="noopener noreferrer" target="_blank">espresearch.com</a>
         </div>
+      </div>
 
-      </div>      
-    );
-  }
+    </div>      
+  );
+
 }
 
 export default App;
